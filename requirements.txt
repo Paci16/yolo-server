@@ -1,0 +1,7 @@
+ultralytics==8.2.50
+torch>=2.0.0
+numpy
+opencv-python
+fastapi
+uvicorn
+python-multipart
