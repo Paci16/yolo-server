@@ -1,5 +1,5 @@
 ultralytics==8.2.50
-torch>=2.0.0
+torch==2.0.1+cpu --extra-index-url https://download.pytorch.org/whl/cpu
 numpy
 opencv-python
 fastapi

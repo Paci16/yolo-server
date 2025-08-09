@@ -4,21 +4,22 @@ from ultralytics import YOLO
 import tempfile
 import uvicorn
 import os
+import torch
 import requests
 
-MODEL_PATH = "/tmp/yolov8n.pt"
+MODEL_PATH = "yolov8n.pt"
 MODEL_URL = "https://github.com/ultralytics/assets/releases/download/v0.0.0/yolov8n.pt"
 
-# Download model jika belum ada
+# Download model if not exists
 if not os.path.exists(MODEL_PATH):
-    print("Downloading YOLOv8n model...")
-    r = requests.get(MODEL_URL)
-    with open(MODEL_PATH, "wb") as f:
-        f.write(r.content)
-    print("Model downloaded!")
+    import urllib.request
+    print(f"Downloading YOLOv8 model from {MODEL_URL}...")
+    urllib.request.urlretrieve(MODEL_URL, MODEL_PATH)
+    print("Download complete.")
 
-# Load model YOLO
+# Load model
 model = YOLO(MODEL_PATH)
+
 
 # Create FastAPI app
 app = FastAPI()
